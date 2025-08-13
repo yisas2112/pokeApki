@@ -2,6 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 // Aquí definís tus estilos globales como si fuera un archivo .css normal
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
   *,
   *::before,
   *::after {
@@ -11,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Rubik', sans-serif; 
     background-color: #f5f5f5;
     color: #1c1e21;
   }
