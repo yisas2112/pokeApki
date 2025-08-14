@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   
+  
 `;
 
 const NavContainer = styled.div`
