@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Logo from '../logo/logo';
-import Title from '../title';
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -12,21 +11,27 @@ const HeaderContainer = styled.header`
   margin: 20px auto; /* Centrado en la página */
   display: flex;
   align-items: center;
-  
-  
+  gap: 0.3rem;
+  justify-content: space-between;
+
 `;
 
 const NavContainer = styled.div`
+  width: 40%;
   display: flex;
-  align-items: center;
+  align-items: center;  
   `;
 
 const Ul = styled.ul`
-
+  width: 100%;
+  display : flex;
+  justify-content: space-evenly;
+  
+  
 `;
 
 const Li = styled.li`
-  
+  list-style: none;
 
 `;
 
@@ -36,8 +41,17 @@ const Navbar = () => {
       <Logo/>
       <NavContainer>
         <Ul>
-          <Li>
+          <Li id='Home'>
             Home
+          </Li>
+          <Li id='About'>
+            About
+          </Li>
+          <Li id='Work'>
+            Work
+          </Li>
+          <Li id='Blog'>
+            Blog
           </Li>
         </Ul>
       </NavContainer>
