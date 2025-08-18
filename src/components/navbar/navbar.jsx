@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Logo from '../logo/logo';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -13,50 +15,96 @@ const HeaderContainer = styled.header`
   align-items: center;
   gap: 0.3rem;
   justify-content: space-between;
+  transform:skew(-25deg);
 
+  #Logo{
+    transform:skew(25deg);
+  }
 `;
 
 const NavContainer = styled.div`
   width: 40%;
   display: flex;
   align-items: center;  
-  `;
+
+`;
 
 const Ul = styled.ul`
   width: 100%;
   display : flex;
   justify-content: space-evenly;
-  
+
+  .active{
+    border-bottom: 2px solid tomato;
+    border-radius: 7px 7px 0 0;
+     
+    a{
+      position: relative;
+      left: -6px;
+    }
+  }
   
 `;
 
 const Li = styled.li`
   list-style: none;
+  text-decoration: none;
+  font-size: 18px;
+    font-weight:bolder;
+  color:#555;
+  transition:all 0.3s linear;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 7px;
+
+
+  a{
+    display:block;
+    color:inherit;
+    text-decoration:none;
+    transform:skew(25deg);
+  }
+  &:hover{
+    background:#eee;
+    color: tomato;
+  }
 
 `;
 
 const Navbar = () => {
+  const [active, setActive] = useState('Home');
+  
+  const handleClick = (e) => {
+    setActive(e.target.id);
+  }
   return (
-    <HeaderContainer>
+    <HeaderContainer id='HeaderContainer'>
       <Logo/>
       <NavContainer>
         <Ul>
-          <Li id='Home'>
-            Home
+          <Li className={active === 'Home' ? 'active' : ''}>
+            <Link id='Home' to={'/'} onClick={handleClick}>
+              Home
+            </Link>
           </Li>
-          <Li id='About'>
-            About
+          <Li className={active === 'About' ? 'active' : ''}>
+            <Link id='About' to={'/About'} onClick={handleClick}>
+              About
+            </Link>
           </Li>
-          <Li id='Work'>
-            Work
+          <Li className={active === 'Work' ? 'active' : ''}>
+            <Link id='Work' to={'/Work'} onClick={handleClick}>
+              Work
+            </Link>
           </Li>
-          <Li id='Blog'>
-            Blog
+          <Li className={active === 'Blog' ? 'active' : ''}>
+            <Link id='Blog' to={'/Blog'} onClick={handleClick}>
+              Blog
+            </Link>
           </Li>
         </Ul>
       </NavContainer>
     </HeaderContainer>
-
   )
 }
 
