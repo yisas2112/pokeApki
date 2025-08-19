@@ -6,9 +6,9 @@ const LogoImg = styled.img`
   z-index: 1;
 `;
 
-const Logo = ({className}) => {
+const Logo = ({className, onClick}) => {
   return (
-      <LogoImg className={className} id="Logo" src="/src/assets/logo.png" alt="Logo" />
+      <LogoImg className={className} onClick={onClick} id="Logo" src="/src/assets/logo.png" alt="Logo" />
   )
 }
 

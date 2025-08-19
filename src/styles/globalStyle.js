@@ -26,6 +26,10 @@ const GlobalStyle = createGlobalStyle`
   h1, h2, h3 {
     font-weight: 600;
   }
+
+ #pages{
+  
+ }
 `;
 
 export default GlobalStyle;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Logo from '../logo/logo';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -50,7 +50,7 @@ const Li = styled.li`
   list-style: none;
   text-decoration: none;
   font-size: 18px;
-    font-weight:bolder;
+  font-weight:bolder;
   color:#555;
   transition:all 0.3s linear;
   cursor: pointer;
@@ -73,18 +73,24 @@ const Li = styled.li`
 
 const Navbar = () => {
   const [active, setActive] = useState('Home');
-  
+  const navigate = useNavigate()
   const handleClick = (e) => {
-    setActive(e.target.id);
+    setActive(e?.target?.id || e);
+  }
+
+  const handleClicLogo = ()=>{
+    setActive('Home')
+    navigate('/')
+
   }
   return (
     <HeaderContainer id='HeaderContainer'>
-      <Logo/>
+      <Logo onClick={handleClicLogo}/>
       <NavContainer>
         <Ul>
           <Li className={active === 'Home' ? 'active' : ''}>
             <Link id='Home' to={'/'} onClick={handleClick}>
-              Home
+              Pokemon
             </Link>
           </Li>
           <Li className={active === 'About' ? 'active' : ''}>
