@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import Input from '../../components/inputs/input/input';
+import { iconsMapping } from '../../components/icons/iconsMappging';
+import { useEffect, useState } from 'react';
+import UserForm from '../../hooks/useForm/userForm';
 
 const SearchPokemonContainer = styled.div`
   width: 100%;
@@ -9,23 +12,33 @@ const SearchPokemonContainer = styled.div`
 `;
 
 const Formulario = styled.form `
-
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 `;
 const SearchPokemon = () => {
+  const { handleChange, values } = UserForm({
+    name:''
+  });
 
   const onSubmit = (e)=>{
     e.preventDefault();
     console.log(e)
   }
 
-  const handleChange = (e, name)=>{
-    console.log(e,name)
+  useEffect(() => {
+    console.log(values)
+    return () => {
+      
+    };
+  }, [values]);
 
-  }
   return (
     <SearchPokemonContainer>
       <Formulario onSubmit={onSubmit}>
-        <Input label={'Buscar Pokemon: '} handleChange={handleChange} name={'name'}/>
+        <Input placeholder={'Nombre'} handleChange={handleChange} name={'name'}/>
+        {iconsMapping['FaSearch']({"data-tooltip-id" : "tooltip",size:25, className:'icono-default', onClick:onSubmit})}
       </Formulario>
     </SearchPokemonContainer>
   )

@@ -2,12 +2,31 @@ import { useEffect, useState } from "react";
 import styled from "styled-components"
 
 const InputContainer = styled.div `
+  width: 100%;
   display: flex;
   gap: 0.3rem;
   align-items: center;
 `;
 
 const InputDatos = styled.input `
+  outline: none;
+  display: block;
+  background: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 12px 20px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  transition: 0.3s ease;
+
+  &:focus {
+    color: rgba(0, 0, 0, 0.8);;
+  }
 `;
 
 const Label = styled.span `
@@ -15,20 +34,20 @@ const Label = styled.span `
 `;
 
 
-const Input = ({keyRow, id, name,label,  type, handleChange, width, value, readOnly, color, placeholder, ref, onFocus, onBlur, onKeyDown, className,classNameContainer ,min, maxLength, background, max, style, autoFocus, validaCambio, idDataTooltip, maxWidth }) => {
+const Input = ({keyRow, id, name,label,  type, handleChange, width, value, readOnly, color, placeholder, ref, onFocus, onBlur, onKeyDown, className,classNameContainer ,min, maxLength, background, max, autoFocus, validaCambio, idDataTooltip, customStyles }) => {
   const [dataInput, setDataInput] = useState("");
 
   useEffect(() => {
      setDataInput(value);
   }, [value]);
 
-  const handleOnChange = (e) => {    
+  const handleOnChange = (e) => {
     let valor = e.target.value;
     validaCambio ? handleChange(e, name, (isValid)=>{
       if(isValid){
         setDataInput(valor);
       }
-    }) : (handleChange(e, name), setDataInput(e.target.value))    
+    }) : (handleChange(e, name), setDataInput(valor))    
   }  
   
   const handleKeyDown = (e) => {
@@ -47,7 +66,7 @@ const Input = ({keyRow, id, name,label,  type, handleChange, width, value, readO
         key={keyRow}
         id={id}
         ref={ref}
-        style={{ width: width, color : background == '#ffff00' ? 'black' : color , background : background, style, maxWidth : maxWidth}}      
+        style={{...customStyles, width : width, color : color, background: background}}      
         className={`${readOnly ? "inputDatosReadOnly" : ""} ${className ? className : ''}` }
         type={type || "text"}
         placeholder={placeholder || ""}

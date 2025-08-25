@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     font-family:Helvetica Neue, Helvetica, sans-serif;
     background-color: #f5f5f5;
     color: #1c1e21;
+    --primary-color: tomato;
   }
 
   #root {
@@ -29,6 +30,11 @@ const GlobalStyle = createGlobalStyle`
 
  #pages{
   
+ }
+
+ .icono-default{
+  color: var(--primary-color);
+  cursor: pointer;
  }
 `;
 
