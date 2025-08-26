@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Input from '../../components/inputs/input/input';
 import { iconsMapping } from '../../components/icons/iconsMappging';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import UserForm from '../../hooks/useForm/userForm';
+import useQueryApi from '../../hooks/useQueryApi/useQueryApi';
 
 const SearchPokemonContainer = styled.div`
   width: 100%;
@@ -17,14 +18,19 @@ const Formulario = styled.form `
   align-items: center;
   gap: 10px;
 `;
+
+
 const SearchPokemon = () => {
   const { handleChange, values } = UserForm({
     name:''
   });
+  const {data, status, isFetching, error, refetch} = useQueryApi({queryKey : 'getPokemon', ruta : `pokemon/${values.name}`, method : 'get', mensajeError : 'Pokemón no encontrado.'})
+
+
 
   const onSubmit = (e)=>{
     e.preventDefault();
-    console.log(e)
+    refetch()
   }
 
   useEffect(() => {

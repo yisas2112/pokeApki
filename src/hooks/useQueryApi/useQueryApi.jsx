@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchData } from '../../services/fetchData'
+import useValidaCodeStatus from '../useValidaCodeStatus/useValidaCodeStatus'
 
-const useQueryApi = ({queryKey, ruta, method, dataFetch}) => {
+const useQueryApi = ({queryKey, ruta, method, dataFetch = {}, adapter, mensajeError}) => {
   const {data, status, isFetching, error, refetch} = useQuery({
     queryKey: [queryKey, dataFetch],
     queryFn: ()=>fetchData(ruta,method,dataFetch),
@@ -10,7 +11,11 @@ const useQueryApi = ({queryKey, ruta, method, dataFetch}) => {
     refetchOnWindowFocus: false ,// no volver a consultar al enfocar la ventana
     staleTime: 5 * 60 * 1000 
   })
-  return {data, status, isFetching, error, refetch}
+
+  const {datos} = useValidaCodeStatus({status : status, data : data, metodo : method, mensajeError : mensajeError})
+
+  
+  return {data, status, isFetching, error, refetch, datos}
 }
 
 export default useQueryApi

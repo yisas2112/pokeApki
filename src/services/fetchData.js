@@ -16,10 +16,10 @@ export const fetchData = async(ruta, method = 'get', data,  customHeaders = {} )
     method,
     timeout : 15000 
     })
-    return response.data; // devolvemos los datos de la respuesta
+    return response;
   }catch(error){
     console.error("API Call Error:", error.response?.data || error.message);
-    throw error.response || error; // relanzamos el error
+    return error
   }
 }
 
