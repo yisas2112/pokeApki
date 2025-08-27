@@ -4,6 +4,7 @@ import { iconsMapping } from '../../components/icons/iconsMappging';
 import { useEffect } from 'react';
 import UserForm from '../../hooks/useForm/userForm';
 import useQueryApi from '../../hooks/useQueryApi/useQueryApi';
+import { searchPokemonAdapter } from '../../adapter/pokemon';
 
 const SearchPokemonContainer = styled.div`
   width: 100%;
@@ -24,7 +25,13 @@ const SearchPokemon = () => {
   const { handleChange, values } = UserForm({
     name:''
   });
-  const {data, status, isFetching, error, refetch} = useQueryApi({queryKey : 'getPokemon', ruta : `pokemon/${values.name}`, method : 'get', mensajeError : 'Pokemón no encontrado.'})
+  const {data, status, isFetching, error, refetch} = useQueryApi({
+    queryKey : 'getPokemon', 
+    ruta : `pokemon/${values.name}`,
+    method : 'get', 
+    mensajeError : 'Pokemón no encontrado.',
+    adapter : searchPokemonAdapter
+  })
 
 
 

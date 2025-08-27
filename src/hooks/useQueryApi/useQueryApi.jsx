@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { fetchData } from '../../services/fetchData'
 import useValidaCodeStatus from '../useValidaCodeStatus/useValidaCodeStatus'
+import { useEffect, useState } from 'react'
 
-const useQueryApi = ({queryKey, ruta, method, dataFetch = {}, adapter, mensajeError}) => {
+const useQueryApi = ({queryKey, ruta, method, dataFetch = {}, adapter, mensajeError, columnsToFilter}) => {
+  const [datosFormateados, setDatosFormateados] = useState()
   const {data, status, isFetching, error, refetch} = useQuery({
     queryKey: [queryKey, dataFetch],
     queryFn: ()=>fetchData(ruta,method,dataFetch),
@@ -14,8 +16,16 @@ const useQueryApi = ({queryKey, ruta, method, dataFetch = {}, adapter, mensajeEr
 
   const {datos} = useValidaCodeStatus({status : status, data : data, metodo : method, mensajeError : mensajeError})
 
+  useEffect(() => {
+    if(datos){
+      let dataFormateada = adapter ? adapter(datos) : datos;
+      let dataFiltrada = columnsToFilter ? columnsToFilter(dataFormateada) : dataFormateada
+      setDatosFormateados(dataFiltrada)
+    }
+  }, [datos]);
+
   
-  return {data, status, isFetching, error, refetch, datos}
+  return {data, status, isFetching, error, refetch, datos, datosFormateados}
 }
 
 export default useQueryApi
