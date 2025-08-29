@@ -1,10 +1,11 @@
 
 export const searchPokemonAdapter = (datos) => {
-  console.log(datos)
-  return {
-    id : datos.id,
-    name : datos.name,
-
-  }
+  return datos.data.results.map((pokemon, key) => {
+    return {
+    id : pokemon.url.split('/')[6],
+    name : pokemon.name,
+    url : pokemon.url
+    } 
+  })
 }
 

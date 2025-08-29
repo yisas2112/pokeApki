@@ -13,14 +13,13 @@ function App() {
     <>
       <QueryClientProvider client={queryClient}>
         <GlobalStyle/>
-        <Navbar/>
-        <Routes>
-          <Route path='/' element={<SearchPokemon/>} />
-          <Route path='/About' element={<h1>About</h1>} />
-        </Routes>
-        <TooltipCentralized/>  
+          <Navbar/>
+          <Routes>
+            <Route path='/' element={<SearchPokemon/>} />
+            <Route path='/About' element={<h1>About</h1>} />
+          </Routes>
+          <TooltipCentralized/>  
       </QueryClientProvider>
-      
     </>
   )
 }

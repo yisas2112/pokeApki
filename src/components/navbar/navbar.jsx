@@ -13,6 +13,7 @@ const HeaderContainer = styled.header`
   margin: 20px auto; /* Centrado en la página */
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.3rem;
   justify-content: space-between;
   transform:skew(-25deg);
@@ -23,7 +24,6 @@ const HeaderContainer = styled.header`
 `;
 
 const NavContainer = styled.div`
-  width: 40%;
   display: flex;
   align-items: center;  
 
