@@ -1,0 +1,68 @@
+import { useEffect } from 'react'
+import useQueryApi from '../../../hooks/useQueryApi/useQueryApi';
+import { pokemonAdapter } from '../../../adapter/pokemon';
+import styled from 'styled-components';
+import { upperCaseFirstLetter } from '../../../utilities/upperCaseFirstLetter';
+import { completarNumeroConCeros } from '../../../utilities/completarNumeroConCeros';
+import TypeContainer from '../../types/typeContainer/typeContainer';
+
+const DivCardPokemon = styled.div `
+  width: 20%;
+  border: 1px solid #f2f2f2;
+  background: #ffffff;
+  box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.08);
+  border-radius: 10px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`
+const ImgPokemon = styled.img `
+  width: 100%;
+  height: 70%;
+  border-radius: 10px;
+`
+
+const H3 = styled.h3 `
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+`
+
+const Texto = styled.p `
+  font-size: 0.9rem;
+`
+
+
+const CardPokemon = ({id}) => {
+  const {datosFormateados : Pokemon, refetch} = useQueryApi({
+    queryKey : `getPokemon${id}`, 
+    ruta : `pokemon/${id}`,
+    method : 'get', 
+    adapter : pokemonAdapter,
+  })
+
+  useEffect(() => {
+    if(id){
+      refetch();
+    }
+  }, [id]);
+
+  useEffect(() => {
+    console.log(Pokemon)
+    
+  }, [Pokemon]);
+  return Pokemon &&
+      <DivCardPokemon>
+        <ImgPokemon src={Pokemon.image} alt={Pokemon.name}/>
+        <H3>{upperCaseFirstLetter(Pokemon.name)}</H3>
+        <Texto>
+          N°: {completarNumeroConCeros(Pokemon.id)} <br/>
+        </Texto>
+        <TypeContainer types={Pokemon.types}/>
+      </DivCardPokemon>    
+
+    
+}
+
+export default CardPokemon

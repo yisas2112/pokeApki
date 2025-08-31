@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import Input from '../../components/inputs/input/input';
 import { iconsMapping } from '../../components/icons/iconsMappging';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import UserForm from '../../hooks/useForm/userForm';
-import ContainerCards from '../../components/containerCards/containerCards';
+import ContainerCards from '../../components/pokemonByNames/containerCards/containerCards';
 import useGetPokemon from '../../hooks/useGetPokemon/useGetPokemon';
+import { filterPokemonByName } from '../../utilities';
 
 const SearchPokemonContainer = styled.div`
   width: 100%;
@@ -24,28 +25,23 @@ const Formulario = styled.form `
 
 const SearchPokemon = () => {
   const {Pokemones} = useGetPokemon()
+  const [pokemonFiltrados, setPokemonFiltrados] = useState();
   const { handleChange, values } = UserForm({
     name:''
   });
 
   const onSubmit = (e)=>{
     e.preventDefault();
+    let result = filterPokemonByName(Pokemones, values.name)
+    setPokemonFiltrados(result)
   }
-
-  useEffect(() => {
-    console.log(values)
-    return () => {
-      
-    };
-  }, [values]);
-
   return (
     <SearchPokemonContainer>
       <Formulario onSubmit={onSubmit}>
         <Input placeholder={'Nombre o número'} handleChange={handleChange} name={'name'}/>
         {iconsMapping['FaSearch']({"data-tooltip-id" : "tooltip",size:25, className:'icono-default', onClick:onSubmit})}
       </Formulario>
-      <ContainerCards></ContainerCards>
+      <ContainerCards pokemons={pokemonFiltrados}/>
     </SearchPokemonContainer>
   )
 }

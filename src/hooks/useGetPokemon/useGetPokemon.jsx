@@ -1,21 +1,19 @@
-import React from 'react'
-import { searchPokemonAdapter } from '../../adapter/pokemon'
+import { searchAllPokemonAdapter } from '../../adapter/pokemon'
 import useQueryApi from '../useQueryApi/useQueryApi'
 import { useEffect } from 'react'
 
 const useGetPokemon = () => {
   const {datosFormateados : Pokemones, refetch} = useQueryApi({
-    queryKey : 'getPokemon', 
+    queryKey : 'getAllPokemon', 
     ruta : `pokemon/?limit=1500`,
     method : 'get', 
-    adapter : searchPokemonAdapter,
-    
+    adapter : searchAllPokemonAdapter,
   })
 
   useEffect(() => {
     refetch()
-
   }, []);
+  
   return {Pokemones}
 }
 
