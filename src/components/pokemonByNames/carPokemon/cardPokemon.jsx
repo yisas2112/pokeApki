@@ -7,7 +7,8 @@ import { completarNumeroConCeros } from '../../../utilities/completarNumeroConCe
 import TypeContainer from '../../types/typeContainer/typeContainer';
 
 const DivCardPokemon = styled.div `
-  width: 20%;
+  width: 20rem;
+  height: 20rem;
   border: 1px solid #f2f2f2;
   background: #ffffff;
   box-shadow: 0 4px 12px hsla(0, 0%, 0%, 0.08);
@@ -16,6 +17,7 @@ const DivCardPokemon = styled.div `
   display: flex;
   flex-direction: column;
   gap: 5px;
+  cursor: pointer;
 `
 const ImgPokemon = styled.img `
   width: 100%;
@@ -53,7 +55,7 @@ const CardPokemon = ({id}) => {
     
   }, [Pokemon]);
   return Pokemon &&
-      <DivCardPokemon>
+      <DivCardPokemon className='CardPokemon'>
         <ImgPokemon src={Pokemon.image} alt={Pokemon.name}/>
         <H3>{upperCaseFirstLetter(Pokemon.name)}</H3>
         <Texto>

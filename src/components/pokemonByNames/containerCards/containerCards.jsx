@@ -3,7 +3,7 @@ import CardPokemon from '../carPokemon/cardPokemon'
 
 const ContainerDiv = styled.div`
   width: 90%;
-  height: 20rem;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   gap: 10%;
@@ -12,7 +12,7 @@ const ContainerDiv = styled.div`
 
 const ContainerCards = ({pokemons}) => {
   return (
-    <ContainerDiv>
+    <ContainerDiv className='ContainerCards'>
       {pokemons && pokemons.map((pokemon) => {
         return <CardPokemon id={pokemon.id} key={pokemon.id}/>
       })}
