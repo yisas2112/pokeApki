@@ -6,8 +6,11 @@ import UserForm from '../../hooks/useForm/userForm';
 import ContainerCards from '../../components/pokemonByNames/containerCards/containerCards';
 import useGetPokemon from '../../hooks/useGetPokemon/useGetPokemon';
 import { filterPokemonByName } from '../../utilities';
+import Pagination from '../../components/pagination/pagination';
+import usePagination from '../../hooks/usePagination/usePagination';
 
 const SearchPokemonContainer = styled.div`
+  height: max-content;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -26,6 +29,7 @@ const Formulario = styled.form `
 const SearchPokemon = () => {
   const {Pokemones} = useGetPokemon()
   const [pokemonFiltrados, setPokemonFiltrados] = useState();
+  const { currentRecords, nextPage, prevPage, nPages, currentPage} = usePagination({data : pokemonFiltrados})  
   const { handleChange, values } = UserForm({
     name:''
   });
@@ -36,12 +40,15 @@ const SearchPokemon = () => {
     setPokemonFiltrados(result)
   }
   return (
-    <SearchPokemonContainer>
+    <SearchPokemonContainer className='SearchPokemonContainer'>
       <Formulario onSubmit={onSubmit}>
         <Input placeholder={'Nombre o número'} handleChange={handleChange} name={'name'}/>
-        {iconsMapping['FaSearch']({"data-tooltip-id" : "tooltip",size:25, className:'icono-default', onClick:onSubmit})}
+        {iconsMapping['FaSearch']({"data-tooltip-id" : "iconBuscar",size:25, className:'icono-default', onClick:onSubmit})}
       </Formulario>
-      <ContainerCards pokemons={pokemonFiltrados}/>
+      <ContainerCards pokemons={currentRecords}/>
+      {nPages > 1 &&
+      <Pagination currentPage={currentPage} nPages={nPages} onNextPage={nextPage} onPrevPage={prevPage}/>
+      }
     </SearchPokemonContainer>
   )
 }

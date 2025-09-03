@@ -50,10 +50,6 @@ const CardPokemon = ({id}) => {
     }
   }, [id]);
 
-  useEffect(() => {
-    console.log(Pokemon)
-    
-  }, [Pokemon]);
   return Pokemon &&
       <DivCardPokemon className='CardPokemon'>
         <ImgPokemon src={Pokemon.image} alt={Pokemon.name}/>

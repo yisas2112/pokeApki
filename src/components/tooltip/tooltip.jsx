@@ -4,10 +4,22 @@ const TooltipCentralized = () => {
   return (
     <>
       <Tooltip
-        id="tooltip"
+        id="iconBuscar"
         place="top"
         effect="solid"
         content='Buscar'
+      />
+      <Tooltip
+        id="prevPage"
+        place="top"
+        effect="solid"
+        content='Anterior'
+      />
+      <Tooltip
+        id="nextPage"
+        place="top"
+        effect="solid"
+        content='Siguiente'
       />
     </>
   )

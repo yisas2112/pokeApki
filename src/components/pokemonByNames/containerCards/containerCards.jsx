@@ -3,10 +3,10 @@ import CardPokemon from '../carPokemon/cardPokemon'
 
 const ContainerDiv = styled.div`
   width: 90%;
-  height: 100vh;
+  margin: 0 auto; /* Para centrar el contenedor principal */
   display: flex;
   flex-wrap: wrap;
-  gap: 10%;
+  gap: 25px; 
   justify-content: space-around;
 `
 
