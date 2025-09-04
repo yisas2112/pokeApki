@@ -16,6 +16,7 @@ const SearchPokemonContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 20px;
   gap: 20px;
 `;
 
@@ -29,7 +30,7 @@ const Formulario = styled.form `
 const SearchPokemon = () => {
   const {Pokemones} = useGetPokemon()
   const [pokemonFiltrados, setPokemonFiltrados] = useState();
-  const { currentRecords, nextPage, prevPage, nPages, currentPage} = usePagination({data : pokemonFiltrados})  
+  const { currentRecords, nextPage, prevPage, nPages, currentPage, onGoToPage} = usePagination({data : pokemonFiltrados})  
   const { handleChange, values } = UserForm({
     name:''
   });
@@ -47,7 +48,7 @@ const SearchPokemon = () => {
       </Formulario>
       <ContainerCards pokemons={currentRecords}/>
       {nPages > 1 &&
-      <Pagination currentPage={currentPage} nPages={nPages} onNextPage={nextPage} onPrevPage={prevPage}/>
+      <Pagination currentPage={currentPage} nPages={nPages} onNextPage={nextPage} onPrevPage={prevPage} onGoToPage={onGoToPage}/>
       }
     </SearchPokemonContainer>
   )

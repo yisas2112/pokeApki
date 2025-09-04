@@ -25,13 +25,17 @@ const usePagination = ({data}) => {
     }
   };
 
+  const onGoToPage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  }
+
   const prevPage = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
     }
   };
 
-  return { currentRecords, nextPage, prevPage, nPages, currentPage}
+  return { currentRecords, nextPage, prevPage, nPages, currentPage, onGoToPage}
 }
 
 export default usePagination
