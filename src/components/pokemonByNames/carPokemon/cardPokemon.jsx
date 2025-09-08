@@ -1,10 +1,8 @@
-import { useEffect } from 'react'
-import useQueryApi from '../../../hooks/useQueryApi/useQueryApi';
-import { pokemonAdapter } from '../../../adapter/pokemon';
 import styled from 'styled-components';
 import { upperCaseFirstLetter } from '../../../utilities/upperCaseFirstLetter';
 import { completarNumeroConCeros } from '../../../utilities/completarNumeroConCeros';
 import TypeContainer from '../../types/typeContainer/typeContainer';
+import useGetPokemonById from '../../../hooks/useGetPokemonById/useGetPokemonById';
 
 const DivCardPokemon = styled.div `
   width: 20rem;
@@ -37,18 +35,7 @@ const Texto = styled.p `
 
 
 const CardPokemon = ({id}) => {
-  const {datosFormateados : Pokemon, refetch} = useQueryApi({
-    queryKey : `getPokemon${id}`, 
-    ruta : `pokemon/${id}`,
-    method : 'get', 
-    adapter : pokemonAdapter,
-  })
-
-  useEffect(() => {
-    if(id){
-      refetch();
-    }
-  }, [id]);
+  const {Pokemon} = useGetPokemonById({id})
 
   return Pokemon &&
       <DivCardPokemon className='CardPokemon'>

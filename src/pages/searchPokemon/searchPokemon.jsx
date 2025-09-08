@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Input from '../../components/inputs/input/input';
 import { iconsMapping } from '../../components/icons/iconsMappging';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UserForm from '../../hooks/useForm/userForm';
 import ContainerCards from '../../components/pokemonByNames/containerCards/containerCards';
 import useGetPokemon from '../../hooks/useGetPokemon/useGetPokemon';

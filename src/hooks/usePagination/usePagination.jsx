@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 
 const usePagination = ({data}) => {  
   const [currentPage, setCurrentPage] = useState(1);  
-  const registrosPorPagina = 10;
+  const registrosPorPagina = 9;
 
   //Calculo total de paginas
   const nPages = useMemo(() => {

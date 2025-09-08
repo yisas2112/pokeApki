@@ -1,14 +1,5 @@
-import styled from 'styled-components'
+import { ContainerDiv } from '../../../styledComponents/divContainer'
 import CardPokemon from '../carPokemon/cardPokemon'
-
-const ContainerDiv = styled.div`
-  width: 90%;
-  margin: 0 auto; /* Para centrar el contenedor principal */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 25px; 
-  justify-content: space-around;
-`
 
 const ContainerCards = ({pokemons}) => {
   return (
