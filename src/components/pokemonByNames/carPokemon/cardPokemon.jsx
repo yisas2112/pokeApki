@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { upperCaseFirstLetter } from '../../../utilities/upperCaseFirstLetter';
-import { completarNumeroConCeros } from '../../../utilities/completarNumeroConCeros';
-import TypeContainer from '../../types/typeContainer/typeContainer';
-import useGetPokemonById from '../../../hooks/useGetPokemonById/useGetPokemonById';
+import { upperCaseFirstLetter } from '@utilities/upperCaseFirstLetter';
+import { completarNumeroConCeros } from '@utilities/completarNumeroConCeros';
+import useGetPokemonById from '@hooks/useGetPokemonById/useGetPokemonById';
+import TypeContainer from '@components/types/typeContainer/typeContainer';
 
 const DivCardPokemon = styled.div `
   width: 20rem;

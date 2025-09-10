@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import Navbar from './components/navbar/navbar'
-import GlobalStyle from './styles/globalStyle';
-import SearchPokemon from './pages/searchPokemon/searchPokemon';
-import TooltipCentralized from './components/tooltip/tooltip';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import PokemonDetailContainer from './components/pokemon/pokemonDetailContainer/pokemonDetailContainer';
+import PokemonDetailContainer from '@components/pokemon/pokemonDetailContainer/pokemonDetailContainer';
+import TooltipCentralized from '@components/tooltip/tooltip';
+import SearchPokemon from '@pages/searchPokemon/searchPokemon';
+import Navbar from '@components/navbar/navbar';
+import GlobalStyle from '@styles/globalStyle';
 
 const queryClient = new QueryClient();
 

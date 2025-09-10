@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import Input from '../../components/inputs/input/input';
-import { iconsMapping } from '../../components/icons/iconsMappging';
 import { useState } from 'react';
-import UserForm from '../../hooks/useForm/userForm';
-import ContainerCards from '../../components/pokemonByNames/containerCards/containerCards';
-import useGetPokemon from '../../hooks/useGetPokemon/useGetPokemon';
-import { filterPokemonByName } from '../../utilities';
-import Pagination from '../../components/pagination/pagination';
-import usePagination from '../../hooks/usePagination/usePagination';
+import Input from '@components/inputs/input/input';
+import { ContainerDiv } from '@styledComponents/divContainer';
+import { iconsMapping } from '@components/icons/iconsMappging';
+import UserForm from '@hooks/useForm/userForm';
+import ContainerCards from '@components/pokemonByNames/containerCards/containerCards';
+import useGetPokemon from '@hooks/useGetPokemon/useGetPokemon';
+import { filterPokemonByName } from '@utilities/index';
+import Pagination from '@components/pagination/pagination';
+import usePagination from '@hooks/usePagination/usePagination';
 
 const SearchPokemonContainer = styled.div`
   height: max-content;
@@ -30,10 +31,20 @@ const Formulario = styled.form `
 const SearchPokemon = () => {
   const {Pokemones} = useGetPokemon()
   const [pokemonFiltrados, setPokemonFiltrados] = useState();
+  const [showFilters, setShowFilters] = useState(false)
   const { currentRecords, nextPage, prevPage, nPages, currentPage, onGoToPage} = usePagination({data : pokemonFiltrados})  
   const { handleChange, values } = UserForm({
     name:''
   });
+
+  const handleClick = (eventName)=>{
+    switch(eventName){
+      case 'filter':
+        setShowFilters(!showFilters)
+      break;
+    }
+
+  }
 
   const onSubmit = (e)=>{
     e.preventDefault();
@@ -45,6 +56,11 @@ const SearchPokemon = () => {
       <Formulario onSubmit={onSubmit}>
         <Input placeholder={'Nombre o número'} handleChange={handleChange} name={'name'}/>
         {iconsMapping['FaSearch']({"data-tooltip-id" : "iconBuscar",size:25, className:'icono-default', onClick:onSubmit})}
+        {iconsMapping['FaFilter']({"data-tooltip-id" : "filter",size:25, className:'icono-default', onClick:()=>handleClick('filter')})}
+        {showFilters &&
+        <ContainerDiv className='filters'>
+          asdads
+        </ContainerDiv>}
       </Formulario>
       <ContainerCards pokemons={currentRecords}/>
       {nPages > 1 &&

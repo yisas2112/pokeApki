@@ -21,6 +21,12 @@ const TooltipCentralized = () => {
         effect="solid"
         content='Siguiente'
       />
+      <Tooltip
+        id="filter"
+        place="top"
+        effect="solid"
+        content='Filtrar'
+      />
     </>
   )
 }

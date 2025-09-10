@@ -1,4 +1,4 @@
-import { ContainerDiv } from '../../../styledComponents/divContainer'
+import { ContainerDiv } from "@styledComponents/divContainer"
 
 const PokemonDetailContainer = () => {
   return (

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Logo from '../logo/logo';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Logo from '@components/logo/logo';
 
 const HeaderContainer = styled.header`
   background-color: #ffffff;
@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   padding: 12px 24px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   width: 90%; /* Ancho máximo para el ejemplo */
-  height: 5rem; /* Altura fija para el navbar */
+  min-height: 5rem; /* Altura fija para el navbar */
   margin: 20px auto; /* Centrado en la página */
   display: flex;
   align-items: center;
@@ -96,16 +96,6 @@ const Navbar = () => {
           <Li className={active === 'About' ? 'active' : ''}>
             <Link id='About' to={'/About'} onClick={handleClick}>
               About
-            </Link>
-          </Li>
-          <Li className={active === 'Work' ? 'active' : ''}>
-            <Link id='Work' to={'/Work'} onClick={handleClick}>
-              Work
-            </Link>
-          </Li>
-          <Li className={active === 'Blog' ? 'active' : ''}>
-            <Link id='Blog' to={'/Blog'} onClick={handleClick}>
-              Blog
             </Link>
           </Li>
         </Ul>

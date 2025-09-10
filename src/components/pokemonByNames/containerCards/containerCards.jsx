@@ -1,5 +1,5 @@
-import { ContainerDiv } from '../../../styledComponents/divContainer'
-import CardPokemon from '../carPokemon/cardPokemon'
+import { ContainerDiv } from '@styledComponents/divContainer'
+import CardPokemon from '@components/pokemonByNames/carPokemon/cardPokemon'
 
 const ContainerCards = ({pokemons}) => {
   return (
