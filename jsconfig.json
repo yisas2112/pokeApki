@@ -8,7 +8,7 @@
       "@pages/*": ["./pages/*"],
       "@assets/*": ["./assets/*"],
       "@hooks/*": ["./hooks/*"],
-      "@adapters/*": ["./adapters/*"],
+      "@adapter/*": ["./adapter/*"],
       "@utilities/*": ["./utilities/*"],
       "@constants/*" : ["./constants/*"],
       "@services/*" : ["./services/*"],

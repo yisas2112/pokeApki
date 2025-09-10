@@ -1,5 +1,5 @@
+import { pokemonAdapter } from '@adapter/pokemon';
 import useQueryApi from '@hooks/useQueryApi/useQueryApi';
-import { pokemonAdapter } from 'adapter/pokemon';
 import { useEffect } from 'react';
 
 const useGetPokemonById = ({id}) => {

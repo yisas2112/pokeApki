@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
-import { fetchData } from '../../services/fetchData'
-import useValidaCodeStatus from '../useValidaCodeStatus/useValidaCodeStatus'
 import { useEffect, useState } from 'react'
+import { fetchData } from '@services/fetchData'
+import useValidaCodeStatus from '@hooks/useValidaCodeStatus/useValidaCodeStatus'
 
 const useQueryApi = ({queryKey, ruta, method, dataFetch = {}, adapter, mensajeError, columnsToFilter}) => {
   const [datosFormateados, setDatosFormateados] = useState()

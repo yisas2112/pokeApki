@@ -1,5 +1,5 @@
-import { searchAllPokemonAdapter } from '../../adapter/pokemon'
-import useQueryApi from '../useQueryApi/useQueryApi'
+import { searchAllPokemonAdapter } from '@adapter/pokemon';
+import useQueryApi from '@hooks/useQueryApi/useQueryApi';
 import { useEffect } from 'react'
 
 const useGetPokemon = () => {

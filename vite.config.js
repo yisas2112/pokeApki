@@ -11,7 +11,7 @@ export default defineConfig({
       '@utilities': '/src/utilities',
       '@services' : '/src/services',
       '@hooks' : '/src/hooks',
-      '@adapters' : '/src/adapters',
+      '@adapter' : '/src/adapter',
       '@pages' : '/src/pages',
       '@constants' : '/src/constants',
       '@context' : '/src/context',

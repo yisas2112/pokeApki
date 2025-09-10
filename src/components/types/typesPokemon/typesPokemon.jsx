@@ -1,9 +1,9 @@
 import { useEffect } from "react"
-import { typePokemonAdapter } from "../../../adapter/pokemon"
 import styled from "styled-components"
-import useQueryApi from "../../../hooks/useQueryApi/useQueryApi"
 import { typeColors } from "../typeColors/typeColors"
+import useQueryApi from "@hooks/useQueryApi/useQueryApi"
 import { mappginIconTypePokemon } from "../iconsTypePokemon"
+import { typePokemonAdapter } from "@adapter/pokemon"
 
 const Span = styled.span`
   /* Usamos la prop directamente. Si no existe, el color es gris. */
