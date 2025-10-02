@@ -9,6 +9,8 @@ import useGetPokemon from '@hooks/useGetPokemon/useGetPokemon';
 import { filterPokemonByName } from '@utilities/index';
 import Pagination from '@components/pagination/pagination';
 import usePagination from '@hooks/usePagination/usePagination';
+import DropdownEstado from '@components/dropdowns/estado';
+import { ORDER_POKEMON } from '@constants/dropdowns';
 
 const SearchPokemonContainer = styled.div`
   height: max-content;
@@ -59,7 +61,12 @@ const SearchPokemon = () => {
         {iconsMapping['FaFilter']({"data-tooltip-id" : "filter",size:25, className:'icono-default', onClick:()=>handleClick('filter')})}
         {showFilters &&
         <ContainerDiv className='filters'>
-          asdads
+          <DropdownEstado
+            options={ORDER_POKEMON}
+            handleChangeAncestor={handleClick}
+            targetNameHandleInput={'order'}
+            title={'Ordenar por:'}
+          />
         </ContainerDiv>}
       </Formulario>
       <ContainerCards pokemons={currentRecords}/>

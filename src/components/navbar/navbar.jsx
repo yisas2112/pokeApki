@@ -93,11 +93,6 @@ const Navbar = () => {
               Pokemon
             </Link>
           </Li>
-          <Li className={active === 'About' ? 'active' : ''}>
-            <Link id='About' to={'/About'} onClick={handleClick}>
-              About
-            </Link>
-          </Li>
         </Ul>
       </NavContainer>
     </HeaderContainer>
